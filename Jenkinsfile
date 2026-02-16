@@ -9,7 +9,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/gohilheena456-cloud/express-app.git'
+                git branch: 'main', url: 'https://github.com/gohilheena456-cloud/express-app.git'
             }
         }
 
@@ -28,4 +28,3 @@ pipeline {
         }
     }
 }
-
