@@ -1,8 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        APP_DIR = "/home/ubuntu/express-app"
+    }
+
     stages {
-        stage('Pull Code') {
+
+        stage('Clone Repository') {
             steps {
                 git 'https://github.com/gohilheena456-cloud/express-app.git'
             }
@@ -16,8 +21,11 @@ pipeline {
 
         stage('Restart Application') {
             steps {
-                sh 'pm2 restart express-app || pm2 start app.js --name express-app'
+                sh '''
+                pm2 restart express-app || pm2 start app.js --name express-app
+                '''
             }
         }
     }
 }
+
